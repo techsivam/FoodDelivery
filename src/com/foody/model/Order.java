@@ -5,6 +5,7 @@ public class Order {
 	private User user;
 	private Restraunt restraunt;
 	private DriverPartner driverPartner;
+	private Integer preparationTime;
 
 	public Order() {
 		// TODO Auto-generated constructor stub
@@ -34,10 +35,11 @@ public class Order {
 		this.driverPartner = driverPartner;
 	}
 
-	public Order(User user, Restraunt restraunt) {
+	public Order(User user, Restraunt restraunt, Integer preparationTime) {
 
 		this.user = user;
 		this.restraunt = restraunt;
+		this.preparationTime = preparationTime;
 
 	}
 
@@ -52,6 +54,14 @@ public class Order {
 
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
+	}
+
+	public Integer getPreparationTime() {
+		return preparationTime;
+	}
+
+	public void setPreparationTime(Integer preparationTime) {
+		this.preparationTime = preparationTime;
 	}
 
 }

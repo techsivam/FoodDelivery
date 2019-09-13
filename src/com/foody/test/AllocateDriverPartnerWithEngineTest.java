@@ -8,13 +8,13 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.foody.AllocateDriverPartner;
+import com.foody.DriverAllocationEngine;
 import com.foody.model.DriverPartner;
 import com.foody.model.Order;
 import com.foody.model.Restraunt;
 import com.foody.model.User;
 
-class AllocateDriverPartnerTest {
+class AllocateDriverPartnerWithEngineTest {
 	private List<DriverPartner> driverPartners = new ArrayList<DriverPartner>();
 	private DriverPartner firstDriverPartner;
 	private DriverPartner secondDriverPartner;
@@ -28,9 +28,9 @@ class AllocateDriverPartnerTest {
 	void setUp() throws Exception {
 
 		firstDriverPartner = new DriverPartner("ID1", "Ram", 10, 20, 5);
-		secondDriverPartner = new DriverPartner("ID2", "Siva", 40, 30, 4);
-		thirdDirverPartner = new DriverPartner("ID3", "Kumnar", 30, 10, 6);
-		fourthDirverPartner = new DriverPartner("ID4", "Prakash", 4, 25, 8);
+		secondDriverPartner = new DriverPartner("ID1", "Ram", 40, 30, 4);
+		thirdDirverPartner = new DriverPartner("ID3", "Ram", 30, 10, 6);
+		fourthDirverPartner = new DriverPartner("ID4", "Ram", 4, 25, 8);
 		driverPartners.add(firstDriverPartner);
 		driverPartners.add(secondDriverPartner);
 		driverPartners.add(thirdDirverPartner);
@@ -38,25 +38,14 @@ class AllocateDriverPartnerTest {
 	}
 
 	@Test
-	void test4thDriverPartner() {
-		AllocateDriverPartner allocateDriverPartner = new AllocateDriverPartner();
-		restraunt = new Restraunt();
-		user = new User();
-		order = new Order(user, restraunt, 10);
-		order.setOrderId("ODSEP132019-101");
-		assertEquals(fourthDirverPartner, allocateDriverPartner.getDriverPartner(driverPartners));
-	}
+	void testWithtDriverAllocationEngine() {
+		DriverAllocationEngine allocationEngine = new DriverAllocationEngine();
 
-	@Test
-	void test1stDriverPartner() {
-		AllocateDriverPartner allocateDriverPartner = new AllocateDriverPartner();
-		firstDriverPartner = new DriverPartner("ID1", "Ram", 1, 10, 4);
-		driverPartners.set(0, firstDriverPartner);
 		restraunt = new Restraunt();
 		user = new User();
 		order = new Order(user, restraunt, 20);
 		order.setOrderId("ODSEP132019-101");
-		assertEquals(firstDriverPartner, allocateDriverPartner.getDriverPartner(driverPartners));
+		assertEquals(firstDriverPartner, allocationEngine.getDriverPartner(driverPartners, order));
 	}
 
 }
