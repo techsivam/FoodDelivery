@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.foody.DriverAllocationEngine;
+import com.foody.engine.DriverAllocationEngine;
 import com.foody.model.DriverPartner;
 import com.foody.model.Order;
 import com.foody.model.Restraunt;

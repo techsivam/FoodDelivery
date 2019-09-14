@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.foody.engine.DriverAllocationEngine;
 import com.foody.model.DriverPartner;
 import com.foody.model.Order;
 import com.foody.model.Restraunt;
@@ -44,7 +45,7 @@ public class AllocateDriverPartner {
 	}
 
 	public void allocateDriverPartnerWitDriverPartnerAllocationEngine(AllocateDriverPartner allocateDriverPartner) {
-		System.out.println("With  Engine");
+		System.out.println("-----DriverAllocationEngine------");
 		List<DriverPartner> driverPartners = allocateDriverPartner.loadDriverPartners();
 		DriverAllocationEngine allocationEngine = new DriverAllocationEngine();
 
@@ -56,16 +57,20 @@ public class AllocateDriverPartner {
 		DriverPartner driverPartner = allocationEngine.getDriverPartner(driverPartners, order);
 
 		order.setDriverPartner(driverPartner);
+
+		System.out.println("---------driverPartners------------- preparationTime:10");
+		driverPartners.stream().forEach(System.out::println);
+		System.out.println("---------Assigned Driver-------------");
 		System.out.println("OrderID: " + order.getOrderId() + " , Driver PartnerID: " + order.getDriverPartner().getId()
 				+ " , Driver Name: " + order.getDriverPartner().getName() + " , Driver Total Order: "
 				+ order.getDriverPartner().getTotalOrder() + " , Driver TravelTimeToRestraunt : "
 				+ order.getDriverPartner().getTravelTimeToRestraunt());
 		System.out.println("-------DriverPartnerForReward------");
 		DriverPartner driverPartnerForReward = allocationEngine.getDriverPartnerForReward(driverPartners);
-		
-		System.out.println("  Driver PartnerID: " + driverPartnerForReward.getId() + " , Driver Name: "
-				+ driverPartnerForReward.getName() + " , Driver Total Order: "
-				+ driverPartnerForReward.getTotalOrder());
+
+		System.out.println("Driver PartnerID: " + driverPartnerForReward.getId() + " , Driver Name: "
+				+ driverPartnerForReward.getName() + " , Driver Total Order: " + driverPartnerForReward.getTotalOrder()
+				+ ", User Rattings " + driverPartnerForReward.getUserRatings());
 
 	}
 
