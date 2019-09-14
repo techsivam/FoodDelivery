@@ -23,14 +23,15 @@ class AllocateDriverPartnerWithEngineTest {
 	private Restraunt restraunt;
 	private User user;
 	private Order order;
+	DriverAllocationEngine allocationEngine = new DriverAllocationEngine();
 
 	@BeforeEach
 	void setUp() throws Exception {
 
-		firstDriverPartner = new DriverPartner("ID1", "Ram", 10, 20, 5);
-		secondDriverPartner = new DriverPartner("ID1", "Ram", 40, 30, 4);
-		thirdDirverPartner = new DriverPartner("ID3", "Ram", 30, 10, 6);
-		fourthDirverPartner = new DriverPartner("ID4", "Ram", 4, 25, 8);
+		firstDriverPartner = new DriverPartner("ID1", "Ram", 10, 20, 5, 4);
+		secondDriverPartner = new DriverPartner("ID1", "Ram", 40, 30, 4, 5);
+		thirdDirverPartner = new DriverPartner("ID3", "Ram", 30, 10, 6, 6);
+		fourthDirverPartner = new DriverPartner("ID4", "Ram", 4, 25, 8, 7);
 		driverPartners.add(firstDriverPartner);
 		driverPartners.add(secondDriverPartner);
 		driverPartners.add(thirdDirverPartner);
@@ -39,13 +40,22 @@ class AllocateDriverPartnerWithEngineTest {
 
 	@Test
 	void testWithtDriverAllocationEngine() {
-		DriverAllocationEngine allocationEngine = new DriverAllocationEngine();
 
 		restraunt = new Restraunt();
 		user = new User();
 		order = new Order(user, restraunt, 20);
 		order.setOrderId("ODSEP132019-101");
 		assertEquals(firstDriverPartner, allocationEngine.getDriverPartner(driverPartners, order));
+	}
+
+	@Test
+	void test$thDriverforUserRattingWithtDriverAllocationEngine() {
+
+		restraunt = new Restraunt();
+		user = new User();
+		order = new Order(user, restraunt, 20);
+		order.setOrderId("ODSEP132019-101");
+		assertEquals(fourthDirverPartner, allocationEngine.getDriverPartnerForReward(driverPartners));
 	}
 
 }

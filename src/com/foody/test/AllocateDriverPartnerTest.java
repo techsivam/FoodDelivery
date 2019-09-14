@@ -27,10 +27,10 @@ class AllocateDriverPartnerTest {
 	@BeforeEach
 	void setUp() throws Exception {
 
-		firstDriverPartner = new DriverPartner("ID1", "Ram", 10, 20, 5);
-		secondDriverPartner = new DriverPartner("ID2", "Siva", 40, 30, 4);
-		thirdDirverPartner = new DriverPartner("ID3", "Kumnar", 30, 10, 6);
-		fourthDirverPartner = new DriverPartner("ID4", "Prakash", 4, 25, 8);
+		firstDriverPartner = new DriverPartner("ID1", "Ram", 10, 20, 5, 4);
+		secondDriverPartner = new DriverPartner("ID2", "Siva", 40, 30, 4, 5);
+		thirdDirverPartner = new DriverPartner("ID3", "Kumnar", 30, 10, 6, 6);
+		fourthDirverPartner = new DriverPartner("ID4", "Prakash", 4, 25, 8, 7);
 		driverPartners.add(firstDriverPartner);
 		driverPartners.add(secondDriverPartner);
 		driverPartners.add(thirdDirverPartner);
@@ -50,7 +50,7 @@ class AllocateDriverPartnerTest {
 	@Test
 	void test1stDriverPartner() {
 		AllocateDriverPartner allocateDriverPartner = new AllocateDriverPartner();
-		firstDriverPartner = new DriverPartner("ID1", "Ram", 1, 10, 4);
+		firstDriverPartner = new DriverPartner("ID1", "Ram", 1, 10, 4, 4);
 		driverPartners.set(0, firstDriverPartner);
 		restraunt = new Restraunt();
 		user = new User();

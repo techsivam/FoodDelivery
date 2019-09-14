@@ -26,4 +26,14 @@ public class DriverAllocationEngine {
 		return filteredTravelTimeList.get(0);
 	}
 
+	public DriverPartner getDriverPartnerForReward(List<DriverPartner> driverPartners) {
+
+		driverPartners.sort(Comparator.comparing(DriverPartner::getUserRatings).reversed());
+
+		driverPartners.stream().forEach(System.out::println);
+		System.out.println("----------------------");
+		return driverPartners.get(0);
+
+	}
+
 }

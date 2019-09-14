@@ -25,13 +25,15 @@ public class DriverPartner {
 	public DriverPartner() {
 	}
 
-	public DriverPartner(String id, String name, Integer location, Integer travelTimeToRestraunt, Integer totalOrder) {
+	public DriverPartner(String id, String name, Integer location, Integer travelTimeToRestraunt, Integer totalOrder,
+			Integer userRatings) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.location = location;
 		this.travelTimeToRestraunt = travelTimeToRestraunt;
 		this.totalOrder = totalOrder;
+		this.userRatings = userRatings;
 	}
 
 	public Integer getLocation() {
@@ -85,6 +87,6 @@ public class DriverPartner {
 	@Override
 	public String toString() {
 		return "DriverPartner [id=" + id + ", name=" + name + ", totalOrder=" + totalOrder + ", travelTimeToRestraunt="
-				+ travelTimeToRestraunt + ", location=" + location + "]";
+				+ travelTimeToRestraunt + ", location=" + location + ", userRatings=" + userRatings +  "]";
 	}
 }

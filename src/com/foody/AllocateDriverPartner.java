@@ -20,10 +20,10 @@ public class AllocateDriverPartner {
 
 	public List<DriverPartner> loadDriverPartners() {
 		List<DriverPartner> driverPartners = new ArrayList<DriverPartner>();
-		driverPartners.add(new DriverPartner("ID1", "Ram", 10, 20, 5));
-		driverPartners.add(new DriverPartner("ID2", "Kumar", 22, 25, 7));
-		driverPartners.add(new DriverPartner("ID3", "Vivek", 3, 5, 2));
-		driverPartners.add(new DriverPartner("ID4", "Senthil", 4, 15, 6));
+		driverPartners.add(new DriverPartner("ID1", "Ram", 10, 20, 5, 4));
+		driverPartners.add(new DriverPartner("ID2", "Kumar", 22, 25, 7, 5));
+		driverPartners.add(new DriverPartner("ID3", "Vivek", 3, 5, 2, 6));
+		driverPartners.add(new DriverPartner("ID4", "Senthil", 4, 15, 6, 7));
 		return driverPartners;
 	}
 
@@ -45,13 +45,14 @@ public class AllocateDriverPartner {
 
 	public void allocateDriverPartnerWitDriverPartnerAllocationEngine(AllocateDriverPartner allocateDriverPartner) {
 		System.out.println("With  Engine");
-
 		List<DriverPartner> driverPartners = allocateDriverPartner.loadDriverPartners();
+		DriverAllocationEngine allocationEngine = new DriverAllocationEngine();
+
 		Restraunt restraunt = new Restraunt("REST1001", "KrishnaSager");
 		User user = new User("USER1001", "Siva");
 		Order order = new Order(user, restraunt, 10);
 		order.setOrderId("ODSEP132019-101");
-		DriverAllocationEngine allocationEngine = new DriverAllocationEngine();
+
 		DriverPartner driverPartner = allocationEngine.getDriverPartner(driverPartners, order);
 
 		order.setDriverPartner(driverPartner);
@@ -59,6 +60,12 @@ public class AllocateDriverPartner {
 				+ " , Driver Name: " + order.getDriverPartner().getName() + " , Driver Total Order: "
 				+ order.getDriverPartner().getTotalOrder() + " , Driver TravelTimeToRestraunt : "
 				+ order.getDriverPartner().getTravelTimeToRestraunt());
+		System.out.println("-------DriverPartnerForReward------");
+		DriverPartner driverPartnerForReward = allocationEngine.getDriverPartnerForReward(driverPartners);
+		
+		System.out.println("  Driver PartnerID: " + driverPartnerForReward.getId() + " , Driver Name: "
+				+ driverPartnerForReward.getName() + " , Driver Total Order: "
+				+ driverPartnerForReward.getTotalOrder());
 
 	}
 
